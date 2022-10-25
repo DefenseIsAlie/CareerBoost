@@ -1,22 +1,82 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<title>Career Boost</title>
-</head>
-<body>
-<h1>Welcome to Career Boost</h1>
-<h2>Company Login</h2>
+	<head>
+		<meta charset="UTF-8">
+		<!-- CSS only -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+		<link rel="stylesheet" href="style.css">
+		<title>Career Boost</title>
+	</head>
+	<body>
+		
+		<h1 align="center">Welcome to Career Boost</h1>
+		
+		<div align="center">
+			<div align="center" style="margin-top : 5rem; border : 1px solid black; display : flex-col; padding : 4rem; width : 50%;">
+				<h2>Company Login</h2>
+				<button onclick="document.getElementById('id02').style.display='block'" style="width:auto; border : 2px solid black; font-size: 1.5rem;">Login as a Company</button>
+				<h2>User Login</h2>
+				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto; border : 2px solid black; font-size : 1.5rem">Login as a User</button>
+			</div>
+		</div>
+		
+		
+		
+		<div id="id02" class="modal login">
+			<form class="modal-content animate" action="Login" method="post">
+		
+			    <div class="container">
+			      <label for="uname"><b>Company ID</b></label>
+			      <input type="text" placeholder="Enter Company ID" name="cid" required>
+			
+			      <label for="psw"><b>Password</b></label>
+			      <input type="password" placeholder="Enter Password" name="password" required>
+			        
+			      <button type="submit">Login</button>
+			    </div>
+		
+			    <div class="container" style="background-color:#f1f1f1">
+			      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+			      <span class="psw">Don't have an account ? <a href="companyRegister.html"> Register</a></span>
+			    </div>
+			</form>
+		</div>
+		
+		
+		<div id="id01" class="modal login">
+			<form class="modal-content animate" action="Login" method="post">
+		
+			    <div class="container">
+			      <label for="uname"><b>User ID</b></label>
+			      <input type="text" placeholder="Enter User ID" name="uid" required>
+			
+			      <label for="psw"><b>Password</b></label>
+			      <input type="password" placeholder="Enter Password" name="password" required>
+			        
+			      <button type="submit">Login</button>
+			    </div>
+		
+			    <div class="container" style="background-color:#f1f1f1">
+			      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+			      <span class="psw">Don't have an account ? <a href="userRegister.html"> Register</a></span>
+			    </div>
+			</form>
+		</div>
 
-<section align="center">
-<h3>Register here</h3>
-
-</section>
-
-<section>
-<h3> Login </h3>
-</section>
+	<script>
+		// Get the modal
+		var modal = document.getElementById('id01');
+		var modal2 = document.getElementById('id02');
+		
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		    if (event.target == modal) {
+		        modal.style.display = "none";
+		    }
+		    if (event.target == modal2) {
+		    	modal2.style.display = "none";
+		    }
+		}
+	</script>
 </body>
 </html>

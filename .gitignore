@@ -62,3 +62,6 @@ mysql-*
 
 .classpath
 .project
+
+build/**
+*.class
