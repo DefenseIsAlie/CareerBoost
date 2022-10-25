@@ -12,18 +12,18 @@
 		<h1 align="center">Welcome to Career Boost</h1>
 		
 		<div align="center">
-			<div align="center" style="margin-top : 5rem; border : 1px solid black; display : flex-col; padding : 4rem; width : 50%;">
+			<div align="center" style="margin-top : 5rem; border : 1px solid black; display : flex-col; padding : 4rem; width : 55%;">
 				<h2>Company Login</h2>
-				<button onclick="document.getElementById('id02').style.display='block'" style="width:auto; border : 2px solid black; font-size: 1.5rem;">Login as a Company</button>
+				<button class="btn btn-primary" onclick="document.getElementById('id02').style.display='block'" style="width:auto; font-size: 1.11rem;">Login as a Company</button>
 				<h2>User Login</h2>
-				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto; border : 2px solid black; font-size : 1.5rem">Login as a User</button>
+				<button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" style="width:auto; font-size : 1.11rem">Login as a User</button>
 			</div>
 		</div>
 		
 		
 		
 		<div id="id02" class="modal login">
-			<form class="modal-content animate" action="Login" method="post">
+			<form style="width:35%" class="modal-content animate" action="Login" method="post">
 		
 			    <div class="container">
 			      <label for="uname"><b>Company ID</b></label>
@@ -32,11 +32,11 @@
 			      <label for="psw"><b>Password</b></label>
 			      <input type="password" placeholder="Enter Password" name="password" required>
 			        
-			      <button type="submit">Login</button>
+			      <button class="btn btn-primary" type="submit">Login</button>
 			    </div>
 		
 			    <div class="container" style="background-color:#f1f1f1">
-			      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+			      <button class="btn btn-danger" type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
 			      <span class="psw">Don't have an account ? <a href="companyRegister.html"> Register</a></span>
 			    </div>
 			</form>
@@ -44,7 +44,7 @@
 		
 		
 		<div id="id01" class="modal login">
-			<form class="modal-content animate" action="Login" method="post">
+			<form style="width:35%" class="modal-content animate" action="Login" method="post">
 		
 			    <div class="container">
 			      <label for="uname"><b>User ID</b></label>
@@ -53,11 +53,11 @@
 			      <label for="psw"><b>Password</b></label>
 			      <input type="password" placeholder="Enter Password" name="password" required>
 			        
-			      <button type="submit">Login</button>
+			      <button class="btn btn-primary" type="submit">Login</button>
 			    </div>
 		
 			    <div class="container" style="background-color:#f1f1f1">
-			      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+			      <button class="btn btn-danger" type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
 			      <span class="psw">Don't have an account ? <a href="userRegister.html"> Register</a></span>
 			    </div>
 			</form>
