@@ -38,7 +38,7 @@ public class Login extends HttpServlet {
 		//doGet(request, response);
 		PrintWriter writer = response.getWriter();
 		String uid = request.getParameter("uid");
-		writer.println("Fuck off" + uid);
+		writer.println(uid);
 	}
 
 }
