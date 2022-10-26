@@ -38,7 +38,7 @@ public class LoginCompany extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		doGet(request, response);
+
         HttpSession s = request.getSession();
         String c_id = request.getParameter("cid");
         String c_pw = request.getParameter("password");
