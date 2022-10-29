@@ -1,4 +1,4 @@
-package Login;
+package Registering;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,15 +17,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class Registering
  */
-public class Login extends HttpServlet {
+public class Registering extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public Registering() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,9 +43,9 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet(request, response);
-		// PrintWriter writer = response.getWriter();
-		HttpSession s = request.getSession();
+		doGet(request, response);
+		
+HttpSession s = request.getSession();
         
 		Connection con = null;
 		
@@ -67,31 +67,50 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 		} //attempting to connect to MySQL database
 		
-		if (request.getParameter("ubtn") != null) {		
+		
+		if (request.getParameter("ubtn") != null) {
 			String u_id = request.getParameter("uid");
 			String u_pw = request.getParameter("password");
+			String email = request.getParameter("email");
 			
 			PreparedStatement st;
 			
 			try {
-				st = con.prepareStatement("SELECT COUNT(*) FROM PortalUser WHERE u_id = ? AND password = ?;");
+				st = con.prepareStatement("SELECT COUNT(*) FROM PortalUser WHERE u_id = ? ;");
 				st.setString(1, u_id);
-				st.setString(2, u_pw);
+				
 				ResultSet result = st.executeQuery();
 				
 				result.next();
 				
 				int count = result.getInt(1);
-			
-				if (count == 0) { // if user_id is not there in the database
-			        RequestDispatcher rd =  request.getRequestDispatcher("index.html");
-			        rd.forward(request, response);
-				} else {
 				
-					s.setAttribute("u_id", u_id);
-		        	s.setAttribute("u_pw", u_pw);
-		        	RequestDispatcher rd =  request.getRequestDispatcher("UserHome.jsp");
-		        	rd.forward(request, response);
+				if (count == 0) {
+					// can register
+					
+					st = con.prepareStatement("INSERT INTO PortalUser VALUES (?, ?, ?, ?) ;");
+					
+					st.setString(1, u_id);
+					st.setString(2, "Karthik");
+					st.setString(3, u_pw);
+					st.setString(4, email);
+					
+					int res = st.executeUpdate();
+					if (res > 0) {
+						// set the session attribute
+						s.setAttribute("u_id", u_id);
+			        	s.setAttribute("u_pw", u_pw);
+			        	
+			        	RequestDispatcher rd =  request.getRequestDispatcher("UserHome.jsp");
+					    rd.forward(request, response);
+					} else {
+						RequestDispatcher rd =  request.getRequestDispatcher("userRegister.html");
+					    rd.forward(request, response);
+					}
+				} else {
+					// cannot register
+					RequestDispatcher rd =  request.getRequestDispatcher("userRegister.html");
+				    rd.forward(request, response);
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -101,27 +120,46 @@ public class Login extends HttpServlet {
 		} else if (request.getParameter("cbtn") != null) {
 			String c_id = request.getParameter("cid");
 			String c_pw = request.getParameter("password");
-
+			String email = request.getParameter("email");
+		
 			PreparedStatement st;
 			
 			try {
-				st = con.prepareStatement("SELECT COUNT(*) FROM Company WHERE c_id = ? AND password = ? ;");
+				st = con.prepareStatement("SELECT COUNT(*) FROM Company WHERE c_id = ? ;");
 				st.setString(1, c_id);
-				st.setString(2, c_pw);
+				
 				ResultSet result = st.executeQuery();
 				
 				result.next();
 				
 				int count = result.getInt(1);
-			
-				if (count == 0) { // if user_id is not there in the database
-			        RequestDispatcher rd =  request.getRequestDispatcher("index.html");
-			        rd.forward(request, response);
+				
+				if (count == 0) {
+					// can register
+					
+					st = con.prepareStatement("INSERT INTO Company VALUES (?, ?, ?, ?) ;");
+					
+					st.setString(1, c_id);
+					st.setString(2, "Karthik");
+					st.setString(3, c_pw);
+					st.setString(4, email);
+					
+					int res = st.executeUpdate();
+					if (res > 0) {
+						// set the session attribute
+						s.setAttribute("c_id", c_id);
+			        	s.setAttribute("c_pw", c_pw);
+			        	
+			        	RequestDispatcher rd =  request.getRequestDispatcher("CompanyHome.jsp");
+					    rd.forward(request, response);
+					} else {
+						RequestDispatcher rd =  request.getRequestDispatcher("companyRegister.html");
+					    rd.forward(request, response);
+					}
 				} else {
-					s.setAttribute("c_id", c_id);
-		        	s.setAttribute("c_pw", c_pw);
-		        	RequestDispatcher rd =  request.getRequestDispatcher("CompanyHome.jsp");
-		        	rd.forward(request, response);
+					// cannot register
+					RequestDispatcher rd =  request.getRequestDispatcher("companyRegister.html");
+				    rd.forward(request, response);
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

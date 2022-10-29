@@ -12,20 +12,20 @@
 <div style="display : flex; align-items: center; justify-content:center; padding : 1rem; margin-top : 5rem;" >
 <div style="width:40%; border : 0.1px solid black; padding : 3rem; border-radius : 1rem;" class="container mt-3">
   <h1 align="center">Register</h1>
-  <form action="#">
+  <form action="Registering" method="post">
   	<div class="mb-3 mt-3">
       <label for="uid">User ID: </label>
-      <input type="text" class="form-control" id="uid" placeholder="Enter User ID" name="uid">
+      <input type="text" class="form-control" id="uid" placeholder="Enter User ID" name="uid" required>
     </div>
     <div class="mb-3 mt-3">
       <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
     </div>
     <div class="mb-3">
       <label for="pwd">Password:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" required>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" name="ubtn">Submit</button>
   </form>
 </div>
 </div>
