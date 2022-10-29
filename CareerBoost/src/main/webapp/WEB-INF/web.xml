@@ -21,26 +21,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>LoginUser</display-name>
-    <servlet-name>LoginUser</servlet-name>
-    <servlet-class>LoginUser.LoginUser</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginUser</servlet-name>
-    <url-pattern>/LoginUser</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>LoginCompany</display-name>
-    <servlet-name>LoginCompany</servlet-name>
-    <servlet-class>LoginCompany.LoginCompany</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LoginCompany</servlet-name>
-    <url-pattern>/LoginCompany</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>Register</display-name>
     <servlet-name>Register</servlet-name>
     <servlet-class>Register</servlet-class>
@@ -58,5 +38,25 @@
   <servlet-mapping>
     <servlet-name>Registering</servlet-name>
     <url-pattern>/Registering</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchJob</display-name>
+    <servlet-name>SearchJob</servlet-name>
+    <servlet-class>SearchJob.SearchJob</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchJob</servlet-name>
+    <url-pattern>/SearchJob</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateSkill</display-name>
+    <servlet-name>UpdateSkill</servlet-name>
+    <servlet-class>UpdateSkill.UpdateSkill</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateSkill</servlet-name>
+    <url-pattern>/UpdateSkill</url-pattern>
   </servlet-mapping>
 </web-app>
