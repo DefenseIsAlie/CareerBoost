@@ -46,7 +46,7 @@ public class LoginCompany extends HttpServlet {
         s.setAttribute("c_id", c_id);
         s.setAttribute("c_pw", c_pw);
         
-        RequestDispatcher rd =  request.getRequestDispatcher("UserHome.jsp");
+        RequestDispatcher rd =  request.getRequestDispatcher("CompanyHome.jsp");
         rd.forward(request, response);
 	}
 
