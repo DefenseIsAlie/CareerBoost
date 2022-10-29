@@ -10,10 +10,15 @@
 	<h3>Above</h3>
 <%
 
-String c_id = (String)session.getAttribute("c_id");
-String c_pw = (String)session.getAttribute("c_pw");
+String session_id = session.getId();
+String c_id = (String)session.getAttribute("u_id");
 
-out.println("<h4>"+c_id+"</h4>");
+if (session_id == null || c_id == null){
+	RequestDispatcher rd = request.getRequestDispatcher("index.html");
+	rd.forward(request, response);
+}
+
+
 
 %>
 <h3>below</h3>
