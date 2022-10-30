@@ -43,14 +43,14 @@
 	if (comp_name == ""){
 
 	try{
-		st = con.prepareStatement("SELECT job_description, salary, company_name, skill_name from Job NATURAL JOIN reuire_skill NATURAL JOIN Skill NATURAL JOIN posts_job NATURAL JOIN Company where skill_name = ?");
+		st = con.prepareStatement("SELECT job_description, salary, company_name, j_id from Job NATURAL JOIN reuire_skill NATURAL JOIN Skill NATURAL JOIN posts_job NATURAL JOIN Company where skill_name = ?");
 		st.setString(1, skill_name);
 
 		ResultSet result = st.executeQuery();
 		int count = 0;
 		
 		while (result.next() && count < 10 ){
-			list_body += "<li class='list-group-item'> Job from company " + result.getString(3) + " With salary " + result.getString(2) + " Job requires: " + result.getString(1) +  " </li>";
+			list_body += "<li class='list-group-item'> Job from company " + result.getString(3) + " With salary " + result.getString(2) + " Job requires: " + result.getString(1) + " with Job id: " + result.getString(4) + "</li>";
 		}
 		
 		list_body += "<li class='list-group-item'> And More.. </li>";
@@ -60,13 +60,13 @@
 	}
 } else{
 	try{
-		st = con.prepareStatement("SELECT job_description, salary, company_name from Job NATURAL JOIN  posts_job NATURAL JOIN Company where company_name = ?");
+		st = con.prepareStatement("SELECT job_description, salary, company_name, j_id from Job NATURAL JOIN  posts_job NATURAL JOIN Company where company_name = ?");
 		st.setString(1, comp_name);
 
 		ResultSet result = st.executeQuery();
 		int count = 0;
 		while (result.next() && count < 10 ){
-			list_body += "<li class='list-group-item'> Job from company " + result.getString(3) + " With salary " + result.getString(2) + " Job requires: " + result.getString(1) +  " </li>";
+			list_body += "<li class='list-group-item'> Job from company " + result.getString(3) + " With salary " + result.getString(2) + " Job requires: " + result.getString(1) + result.getString(1) + " with Job id: " + result.getString(4) +  " </li>";
 		}
 		list_body += "<li class='list-group-item'> And More.. </li>";
 	}catch (SQLException e) {
