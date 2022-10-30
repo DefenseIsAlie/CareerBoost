@@ -14,10 +14,20 @@
 		<title>User Home</title>
 	</head>
 <body>
+<%
+String apply_job = (String)session.getAttribute("apply_job");
+   System.out.println(apply_job);
+if (apply_job != null){
+	System.out.println("Reached here");
+	out.println("<script>alert('Success fully applied')</script>");
+	session.removeAttribute("apply_job");
+}
+%>
 
 <%
 	String session_id = session.getId();
 	String u_id = (String)session.getAttribute("u_id");
+	session.setAttribute("u_id", u_id);
 
 	if (u_id == null) {
 		// securing home page using sessions
@@ -111,7 +121,7 @@
   <h1>Search for JOBS >> </h1>
   <form action="SearchJob" method="post">
   	<div class="mb-3 mt-3">
-      <input type="text" class="form-control" id="cname" placeholder="Enter Company name (or leave blank for every company)" name="cid">
+      <input type="text" class="form-control" id="cid" placeholder="Enter Company name (or leave blank for every company)" name="cid">
     </div>
     <div class="mb-3 mt-3">
       <input type="text" class="form-control" id="email" placeholder="Enter skill name (or leave blank for every skill)" name="skill_name">
@@ -127,12 +137,9 @@
   <h1>Apply for a JOB >> </h1>
   <form action="SearchJob" method="post">
   	<div class="mb-3 mt-3">
-      <input type="text" class="form-control" id="cname" placeholder="Enter Job ID" name="jid" required>
+      <input type="text" class="form-control" id="job_id_for_apply" placeholder="Enter Job ID" name="job_id_for_apply" required>
     </div>
-    <div class="mb-3 mt-3">
-      <input type="text" class="form-control" id="email" placeholder="Enter skill name (or leave blank for every skill)" name="skill_name">
-    </div>
-    <button type="submit" class="btn btn-primary" name="cbtn">Apply</button>
+    <button type="submit" class="btn btn-primary" name="apply_btn">Apply</button>
   </form>
 </div>
 </div>
@@ -144,24 +151,24 @@
   <form action="UpdateSkill" method="post">
   	<div class="mb-3 mt-3">
    
-      <input type="text" class="form-control" id="cid" placeholder="Enter skill name 1" name="cid" required>
+      <input type="text" class="form-control" id="cid" placeholder="Enter skill name 1" name="sid5" required>
     </div>
     <div class="mb-3 mt-3">
      
-      <input type="email" class="form-control" id="email" placeholder="Enter skill name 2" name="email" required>
+      <input type="text" class="form-control" id="email" placeholder="Enter skill name 2" name="sid1" required>
     </div>
     <div class="mb-3 mt-3">
      
-      <input type="email" class="form-control" id="email" placeholder="Enter skill name 3" name="email" required>
+      <input type="text" class="form-control" id="email" placeholder="Enter skill name 3" name="sid2" required>
     </div>
     <div class="mb-3 mt-3">
       
-      <input type="email" class="form-control" id="email" placeholder="Enter skill name 4" name="email" required>
+      <input type="text" class="form-control" id="email" placeholder="Enter skill name 4" name="sid3" required>
     </div>
     <div class="mb-3 mt-3">
-      <input type="email" class="form-control" id="email" placeholder="Enter skill name 5" name="email" required>
+      <input type="text" class="form-control" id="email" placeholder="Enter skill name 5" name="sid4" required>
     </div>
-    <button type="submit" class="btn btn-primary" name="cbtn">Update</button>
+    <button type="text" class="btn btn-primary" name="cbtn">Update</button>
   </form>
 </div>
 </div>

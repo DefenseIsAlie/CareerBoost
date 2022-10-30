@@ -54,3 +54,13 @@ CREATE TABLE hired (
     FOREIGN KEY (j_id) REFERENCES Job(j_id),
     FOREIGN KEY (u_id) REFERENCES PortalUser(u_id)
 );
+
+
+CREATE TABLE applies (
+    j_id VARCHAR(10) NOT NULL,
+    u_id VARCHAR(10) NOT NULL,
+
+    PRIMARY KEY(j_id, u_id),
+    FOREIGN KEY (j_id) REFERENCES Job(j_id),
+    FOREIGN KEY (u_id) REFERENCES PortalUser(u_id)
+)
