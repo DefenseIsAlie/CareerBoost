@@ -72,6 +72,7 @@ HttpSession s = request.getSession();
 			String u_id = request.getParameter("uid");
 			String u_pw = request.getParameter("password");
 			String email = request.getParameter("email");
+			String name = request.getParameter("uname");
 			
 			PreparedStatement st;
 			
@@ -91,7 +92,7 @@ HttpSession s = request.getSession();
 					st = con.prepareStatement("INSERT INTO PortalUser VALUES (?, ?, ?, ?) ;");
 					
 					st.setString(1, u_id);
-					st.setString(2, "Karthik");
+					st.setString(2, name);
 					st.setString(3, u_pw);
 					st.setString(4, email);
 					
@@ -100,6 +101,8 @@ HttpSession s = request.getSession();
 						// set the session attribute
 						s.setAttribute("u_id", u_id);
 			        	s.setAttribute("u_pw", u_pw);
+			        	s.setAttribute("u_name", name);
+			        	s.setAttribute("u_email", email);
 			        	
 			        	RequestDispatcher rd =  request.getRequestDispatcher("UserHome.jsp");
 					    rd.forward(request, response);
@@ -121,7 +124,8 @@ HttpSession s = request.getSession();
 			String c_id = request.getParameter("cid");
 			String c_pw = request.getParameter("password");
 			String email = request.getParameter("email");
-		
+			String name = request.getParameter("cname");
+			
 			PreparedStatement st;
 			
 			try {
@@ -140,7 +144,7 @@ HttpSession s = request.getSession();
 					st = con.prepareStatement("INSERT INTO Company VALUES (?, ?, ?, ?) ;");
 					
 					st.setString(1, c_id);
-					st.setString(2, "Karthik");
+					st.setString(2, name);
 					st.setString(3, c_pw);
 					st.setString(4, email);
 					
@@ -149,6 +153,10 @@ HttpSession s = request.getSession();
 						// set the session attribute
 						s.setAttribute("c_id", c_id);
 			        	s.setAttribute("c_pw", c_pw);
+			        	s.setAttribute("c_name", name);
+			        	s.setAttribute("c_email", email);
+			        	
+			        	System.out.println("Almost there");
 			        	
 			        	RequestDispatcher rd =  request.getRequestDispatcher("CompanyHome.jsp");
 					    rd.forward(request, response);

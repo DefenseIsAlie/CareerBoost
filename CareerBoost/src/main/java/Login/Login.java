@@ -87,9 +87,23 @@ public class Login extends HttpServlet {
 			        RequestDispatcher rd =  request.getRequestDispatcher("index.html");
 			        rd.forward(request, response);
 				} else {
-				
+					st = con.prepareStatement("SELECT user_name, email_id FROM PortalUser WHERE u_id = ? AND password = ? ;");
+					
+					st.setString(1, u_id);
+					st.setString(2, u_pw);
+					
+					ResultSet res = st.executeQuery();
+					
+					res.next();
+					
+					String name = res.getString(1);
+					String email = res.getString(2);
+		
 					s.setAttribute("u_id", u_id);
 		        	s.setAttribute("u_pw", u_pw);
+		        	s.setAttribute("u_name", name);
+		        	s.setAttribute("u_email", email);
+		        	
 		        	RequestDispatcher rd =  request.getRequestDispatcher("UserHome.jsp");
 		        	rd.forward(request, response);
 				}
@@ -118,8 +132,18 @@ public class Login extends HttpServlet {
 			        RequestDispatcher rd =  request.getRequestDispatcher("index.html");
 			        rd.forward(request, response);
 				} else {
+					st = con.prepareStatement("SELECT company_name, email_id FROM Company WHERE c_id = ? AND password = ?;");
+					st.setString(1, c_id);
+					st.setString(2, c_pw);
+					ResultSet res = st.executeQuery();
+					
+					res.next();
+					
 					s.setAttribute("c_id", c_id);
 		        	s.setAttribute("c_pw", c_pw);
+		        	s.setAttribute("c_name", res.getString(1));
+		        	s.setAttribute("c_email", res.getString(2));
+		        	
 		        	RequestDispatcher rd =  request.getRequestDispatcher("CompanyHome.jsp");
 		        	rd.forward(request, response);
 				}
